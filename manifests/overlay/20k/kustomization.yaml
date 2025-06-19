@@ -3,5 +3,5 @@ kind: Kustomization
 bases:
 - ../../base
 images:
-  - name: cmendes/znn
+  - name: registry.k8s.lab/znn
     newTag: 20k

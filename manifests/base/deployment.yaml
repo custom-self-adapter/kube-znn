@@ -23,7 +23,7 @@ spec:
           configMap:
             name: nginx-config
       containers:
-        - image: cmendes/znn:600k
+        - image: registry.k8s.lab/znn:600k
           name: znn
           env:
           - name: DB_HOST
