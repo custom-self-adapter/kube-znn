@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kube-znn
+  labels:
+    name: kube-znn
+spec:
+  ingressClassName: "nginx"
+  rules:
+  - host: znn.k8s.lab
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: kube-znn
+            port: 
+              number: 8080
