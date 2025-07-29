@@ -40,10 +40,10 @@ spec:
             containerPort: 9000
           resources:
             requests:
-              cpu: "50m"
+              cpu: "120m"
               memory: "64Mi"
             limits:
-              cpu: "100m"
+              cpu: "120m"
               memory: "256Mi"
           lifecycle:
             postStart:
