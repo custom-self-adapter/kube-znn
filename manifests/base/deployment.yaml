@@ -16,6 +16,8 @@ spec:
         prometheus.io/scrape: "true"
         prometheus.io/port: "9145"
     spec:
+      nodeSelector:
+        workload: app
       volumes:
         - name: shared-files
           emptyDir: {}

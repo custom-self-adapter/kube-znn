@@ -13,6 +13,8 @@ spec:
       labels:
         app: kube-znn-db
     spec:
+      nodeSelector:
+        workload: db
       volumes:
       - name: init-db-config
         configMap:
