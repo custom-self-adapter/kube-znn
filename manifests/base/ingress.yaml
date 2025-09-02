@@ -7,13 +7,12 @@ metadata:
 spec:
   ingressClassName: "nginx"
   rules:
-  - host: znn.k8s.lab
-    http:
+  - http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
             name: kube-znn
-            port: 
-              number: 8080
+            port:
+              name: http
