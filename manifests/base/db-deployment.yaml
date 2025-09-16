@@ -14,7 +14,7 @@ spec:
         app: kube-znn-db
     spec:
       nodeSelector:
-        workload: db
+        db: "yes"
       volumes:
       - name: init-db-config
         configMap:
@@ -35,10 +35,10 @@ spec:
         - containerPort: 3306
         resources:
           requests:
-            cpu: "250m"
+            cpu: "128m"
             memory: "256Mi"
           limits:
-            cpu: "1500m"
-            memory: "2048Mi"
+            cpu: "500m"
+            memory: "512Mi"
           
 
