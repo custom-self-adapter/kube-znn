@@ -17,7 +17,7 @@ spec:
         prometheus.io/port: "9145"
     spec:
       nodeSelector:
-        workload: app
+        app: "yes"
       volumes:
         - name: shared-files
           emptyDir: {}
@@ -42,11 +42,11 @@ spec:
             containerPort: 9000
           resources:
             requests:
-              cpu: "120m"
-              memory: "64Mi"
+              cpu: "30m"
+              memory: "8Mi"
             limits:
-              cpu: "120m"
-              memory: "256Mi"
+              cpu: "325m"
+              memory: "32Mi"
           lifecycle:
             postStart:
               exec:
@@ -75,8 +75,8 @@ spec:
             containerPort: 9145
           resources:
             requests:
-              cpu: "100m"
-              memory: "64Mi"
+              cpu: "10m"
+              memory: "8Mi"
             limits:
-              cpu: "250m"
-              memory: "128Mi"
+              cpu: "125m"
+              memory: "32Mi"
