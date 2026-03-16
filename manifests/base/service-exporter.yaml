@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube-znn-metrics
+  labels:
+    app: kube-znn
+spec:
+  ports:
+    - name: exporter
+      port: 9145
+      targetPort: exporter
+      protocol: TCP
+  selector:
+    app: kube-znn
+  type: ClusterIP

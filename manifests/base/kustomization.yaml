@@ -15,4 +15,6 @@ resources:
 - db-service.yaml
 - deployment.yaml
 - service.yaml
+- service-exporter.yaml
+- service-monitor.yaml
 - ingress.yaml
