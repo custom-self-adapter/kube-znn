@@ -16,3 +16,4 @@ spec:
             name: kube-znn
             port:
               name: http
+    host: "znn.k8s.lab"
