@@ -5,9 +5,15 @@ metadata:
   labels:
     app: kube-znn
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: kube-znn
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: "25%"
+      maxSurge: "25%"
   template:
     metadata:
       labels:
@@ -26,27 +32,28 @@ spec:
             name: nginx-config
       containers:
         - image: registry.k8s.lab/znn:600k
+          imagePullPolicy: Always
           name: znn
           env:
-          - name: DB_HOST
-            value: "kube-znn-db"
-          - name: DB_NAME
-            value: "znn"
-          - name: DB_PASS
-            value: "znn_pass"
+            - name: DB_HOST
+              value: "kube-znn-db"
+            - name: DB_NAME
+              value: "znn"
+            - name: DB_PASS
+              value: "znn_pass"
           volumeMounts:
             - name: shared-files
               mountPath: /var/www/html
           ports:
-          - name: fpm
-            containerPort: 9000
+            - name: fpm
+              containerPort: 9000
           resources:
             requests:
-              cpu: "30m"
-              memory: "8Mi"
+              cpu: "50m"
+              memory: "16Mi"
             limits:
-              cpu: "325m"
-              memory: "32Mi"
+              cpu: "150m"
+              memory: "64Mi"
           lifecycle:
             postStart:
               exec:
@@ -69,14 +76,14 @@ spec:
               mountPath: /etc/nginx/nginx-lua-prometheus/prometheus.lua
               subPath: prometheus.lua
           ports:
-          - name: http
-            containerPort: 80
-          - name: exporter
-            containerPort: 9145
+            - name: http
+              containerPort: 80
+            - name: exporter
+              containerPort: 9145
           resources:
             requests:
-              cpu: "10m"
-              memory: "8Mi"
+              cpu: "50m"
+              memory: "16Mi"
             limits:
-              cpu: "125m"
-              memory: "32Mi"
+              cpu: "150m"
+              memory: "64Mi"
