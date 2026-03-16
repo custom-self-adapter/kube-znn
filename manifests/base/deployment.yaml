@@ -17,7 +17,7 @@ spec:
         prometheus.io/port: "9145"
     spec:
       nodeSelector:
-        app: "yes"
+        autoscaling.lab/app: "yes"
       volumes:
         - name: shared-files
           emptyDir: {}
